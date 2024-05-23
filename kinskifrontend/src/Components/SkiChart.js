@@ -7,8 +7,7 @@ import SecondChart from './SecondChart';
 
 export default function SkiChart({selectedChart}){
 
-  const SOCKET_URL = 'http://localhost:8080/ws-message';
-
+  //const SOCKET_URL = 'http://backend:8080/ws-message';
 
   const initialData = [
     {
@@ -71,12 +70,15 @@ export default function SkiChart({selectedChart}){
         </div>
         <div>
           <SockJsClient
-            url={SOCKET_URL}
+            //url={SOCKET_URL}
+            url={process.env.REACT_APP_API_URL +'/ws-message'}
             topics={['/topic/message']}
             onConnect={console.log("Connected!!")}
             onDisconnect={console.log("Disconnected!")}
             onMessage={msg => onMessageReceived(msg)}
             debug={false}
+            onConnectFailure={(err) => console.error("Connection failed:", err)}
+            onStompError={(err) => console.error("STOMP error:", err)}
           />
           <button className='graph__button' onClick={resetGraph}>Reset</button>
         </div>
