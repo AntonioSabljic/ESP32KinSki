@@ -1,6 +1,5 @@
 import React, {useEffect, useState} from 'react';
 import SockJsClient from 'react-stomp';
-import {ResponsiveContainer} from 'recharts'
 import FirstChart from './FirstChart';
 import SecondChart from './SecondChart';
 
@@ -8,26 +7,7 @@ import SecondChart from './SecondChart';
 export default function SkiChart({selectedChart}){
 
   const backendUrl = process.env.REACT_APP_API_URL;
-  const initialData = [
-    {
-      name: '2024-04-23T18:40:50',
-      left_ski: 0,
-      right_ski: 0
-    },
-    {
-      name: '2024-04-23T18:40:55',
-      left_ski: 30,
-      right_ski: 20
-    },
-    {
-      name: '2024-04-23T18:40:55',
-      left_ski: 10,
-      right_ski: 30
-    },
-    
-  ];
-
-  const [message,setMessage] = useState(initialData);
+  const [message,setMessage] = useState([]);
 
   const transformData = (data) => {
     const { timestamp, measurements, measurement_delay } = data;
@@ -51,7 +31,6 @@ export default function SkiChart({selectedChart}){
   const onMessageReceived = (msg) => {
 
     const transformedData = transformData(msg);
-    console.log("Transformed data",transformedData)
     setMessage(transformedData);
   }
 
