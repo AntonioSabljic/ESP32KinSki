@@ -7,8 +7,7 @@ import SecondChart from './SecondChart';
 
 export default function SkiChart({selectedChart}){
 
-  //const SOCKET_URL = 'http://backend:8080/ws-message';
-
+  const backendUrl = process.env.REACT_APP_API_URL;
   const initialData = [
     {
       name: '2024-04-23T18:40:50',
@@ -70,8 +69,7 @@ export default function SkiChart({selectedChart}){
         </div>
         <div>
           <SockJsClient
-            //url={SOCKET_URL}
-            url={process.env.REACT_APP_API_URL +'/ws-message'}
+            url={`${backendUrl}/ws-message`}
             topics={['/topic/message']}
             onConnect={console.log("Connected!!")}
             onDisconnect={console.log("Disconnected!")}
