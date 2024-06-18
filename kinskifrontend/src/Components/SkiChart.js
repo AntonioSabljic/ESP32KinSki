@@ -17,9 +17,10 @@ export default function SkiChart({selectedChart}){
 
     const result = left_ski.map((leftValue, index) => {
         const rightValue = right_ski[index];
-        const newTimestamp = new Date(baseTime + index * measurement_delay * 10).toISOString();
+        const time = new Date(baseTime + index * measurement_delay);
+        const adjustedTime = time.toISOString().split('T')[1].replace('Z', '');
         return {
-            name: newTimestamp,
+            name: adjustedTime,
             left_ski: leftValue,
             right_ski: rightValue
         };
