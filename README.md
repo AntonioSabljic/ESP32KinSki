@@ -42,6 +42,9 @@ This is a React project containing the display of data provided by the backend. 
 
 > Best way to run the whole cloud is to use Docker Desktop and run ***docker compose up*** on the ***docker-compose.yml*** file in the spring-boot-kafka-docker project. After that docker will download the images and run the containers (backend,kafka,frontend). When running ***docker compose up*** the first time, the backend container should fail. But don't worry just run it again and it should work. If the frontend does not work just reset it as well. After that you can use the cloud normally.
 
-## 3. Mobile code (flutter_application_demo)
+## 3. Mobile code (zavrsni_mob)
 
-Just has a nice example of the flutter app that can connect and subscribe to the characteristics.
+Flutter app for connecting mobile phone with sensors and the cloud.
+
+Currently works only on Android.
+Install Flutter SDK and run **flutter build apk**.
