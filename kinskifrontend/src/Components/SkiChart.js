@@ -54,15 +54,15 @@ export default function SkiChart({selectedChart}){
     return average;
 }
 
-  function getSkiGrade(array) {
-    const gradeField = array.map((value)=>{
-      if(value > 90) {
-        return 0;
-      }
-      return -1.11*value + 100;
-    });
-    return getAverage(gradeField);
-  }
+function getSkiGrade(array) {
+  const gradeField = array.map((value)=>{
+    if(value >= 90) {
+      return 0;
+    }
+    return -1.11*value + 100;
+  });
+  return getAverage(gradeField);
+}
 
 const calculateCurveSimularityAndNumberOfTurns = (data) => {
   const { timestamp, measurements, measurement_delay } = data;
